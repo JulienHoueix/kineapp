@@ -72,6 +72,12 @@
         </table>
     </div>
 
+	<div data-ng-if="map.center">
+		<ui-gmap-google-map center="map.center" zoom="map.zoom">
+			<ui-gmap-marker coords="map.center" idkey="1"></ui-gmap-marker>
+		</ui-gmap-google-map>
+	</div>
+
     <button type="submit"
             onclick="window.history.back()"
             class="btn btn-info">
