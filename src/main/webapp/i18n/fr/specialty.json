@@ -1,0 +1,19 @@
+{
+    "kineappApp": {
+        "specialty" : {
+            "home": {
+                "title": "Specialtys",
+                "createLabel": "Créer un nouveau Specialty",
+                "createOrEditLabel": "Créer ou éditer un Specialty"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Specialty {{ id }} ?"
+            },
+            "detail": {
+                "title": "Specialty"
+            },
+            "name": "Name"
+        }
+    }
+}
+
