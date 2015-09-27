@@ -2,10 +2,10 @@
 
 angular.module('kineappApp')
     .controller('SpecialtyController', function ($scope, Specialty) {
-        $scope.specialtys = [];
+        $scope.specialties = [];
         $scope.loadAll = function() {
             Specialty.query(function(result) {
-               $scope.specialtys = result;
+               $scope.specialties = result;
             });
         };
         $scope.loadAll();

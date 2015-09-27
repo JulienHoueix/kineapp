@@ -80,26 +80,26 @@ public class SpecialtyResourceTest {
 
         // Create the Specialty
 
-        restSpecialtyMockMvc.perform(post("/api/specialtys")
+        restSpecialtyMockMvc.perform(post("/api/specialties")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(specialty)))
                 .andExpect(status().isCreated());
 
         // Validate the Specialty in the database
-        List<Specialty> specialtys = specialtyRepository.findAll();
-        assertThat(specialtys).hasSize(databaseSizeBeforeCreate + 1);
-        Specialty testSpecialty = specialtys.get(specialtys.size() - 1);
+        List<Specialty> specialties = specialtyRepository.findAll();
+        assertThat(specialties).hasSize(databaseSizeBeforeCreate + 1);
+        Specialty testSpecialty = specialties.get(specialties.size() - 1);
         assertThat(testSpecialty.getName()).isEqualTo(DEFAULT_NAME);
     }
 
     @Test
     @Transactional
-    public void getAllSpecialtys() throws Exception {
+    public void getAllspecialties() throws Exception {
         // Initialize the database
         specialtyRepository.saveAndFlush(specialty);
 
-        // Get all the specialtys
-        restSpecialtyMockMvc.perform(get("/api/specialtys"))
+        // Get all the specialties
+        restSpecialtyMockMvc.perform(get("/api/specialties"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.[*].id").value(hasItem(specialty.getId().intValue())))
@@ -113,7 +113,7 @@ public class SpecialtyResourceTest {
         specialtyRepository.saveAndFlush(specialty);
 
         // Get the specialty
-        restSpecialtyMockMvc.perform(get("/api/specialtys/{id}", specialty.getId()))
+        restSpecialtyMockMvc.perform(get("/api/specialties/{id}", specialty.getId()))
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.id").value(specialty.getId().intValue()))
@@ -124,7 +124,7 @@ public class SpecialtyResourceTest {
     @Transactional
     public void getNonExistingSpecialty() throws Exception {
         // Get the specialty
-        restSpecialtyMockMvc.perform(get("/api/specialtys/{id}", Long.MAX_VALUE))
+        restSpecialtyMockMvc.perform(get("/api/specialties/{id}", Long.MAX_VALUE))
                 .andExpect(status().isNotFound());
     }
 
@@ -140,15 +140,15 @@ public class SpecialtyResourceTest {
         specialty.setName(UPDATED_NAME);
         
 
-        restSpecialtyMockMvc.perform(put("/api/specialtys")
+        restSpecialtyMockMvc.perform(put("/api/specialties")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(specialty)))
                 .andExpect(status().isOk());
 
         // Validate the Specialty in the database
-        List<Specialty> specialtys = specialtyRepository.findAll();
-        assertThat(specialtys).hasSize(databaseSizeBeforeUpdate);
-        Specialty testSpecialty = specialtys.get(specialtys.size() - 1);
+        List<Specialty> specialties = specialtyRepository.findAll();
+        assertThat(specialties).hasSize(databaseSizeBeforeUpdate);
+        Specialty testSpecialty = specialties.get(specialties.size() - 1);
         assertThat(testSpecialty.getName()).isEqualTo(UPDATED_NAME);
     }
 
@@ -161,12 +161,12 @@ public class SpecialtyResourceTest {
 		int databaseSizeBeforeDelete = specialtyRepository.findAll().size();
 
         // Get the specialty
-        restSpecialtyMockMvc.perform(delete("/api/specialtys/{id}", specialty.getId())
+        restSpecialtyMockMvc.perform(delete("/api/specialties/{id}", specialty.getId())
                 .accept(TestUtil.APPLICATION_JSON_UTF8))
                 .andExpect(status().isOk());
 
         // Validate the database is empty
-        List<Specialty> specialtys = specialtyRepository.findAll();
-        assertThat(specialtys).hasSize(databaseSizeBeforeDelete - 1);
+        List<Specialty> specialties = specialtyRepository.findAll();
+        assertThat(specialties).hasSize(databaseSizeBeforeDelete - 1);
     }
 }

@@ -5,14 +5,14 @@ angular.module('kineappApp')
         $stateProvider
             .state('specialty', {
                 parent: 'entity',
-                url: '/specialtys',
+                url: '/specialties',
                 data: {
                     authorities: ['ROLE_USER'],
                     pageTitle: 'kineappApp.specialty.home.title'
                 },
                 views: {
                     'content@': {
-                        templateUrl: 'scripts/app/entities/specialty/specialtys.html',
+                        templateUrl: 'scripts/app/entities/specialty/specialties.html',
                         controller: 'SpecialtyController'
                     }
                 },

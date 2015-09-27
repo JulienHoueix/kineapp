@@ -63,7 +63,7 @@
                     <span translate="kineappApp.physiotherapist.specialty">specialty</span>
                 </td>
                 <td>
-                    <span ng-repeat="specialty in physiotherapist.specialtys">
+                    <span ng-repeat="specialty in physiotherapist.specialties">
                         <a class="form-control-static" ui-sref="specialty.detail({id: {{specialty.id}}})">{{specialty.id}}</a>{{$last ? '' : ', '}}
                     <span>
                 </td>

@@ -31,9 +31,9 @@ public class SpecialtyResource {
     private SpecialtyRepository specialtyRepository;
 
     /**
-     * POST  /specialtys -> Create a new specialty.
+     * POST  /specialties -> Create a new specialty.
      */
-    @RequestMapping(value = "/specialtys",
+    @RequestMapping(value = "/specialties",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
@@ -43,15 +43,15 @@ public class SpecialtyResource {
             return ResponseEntity.badRequest().header("Failure", "A new specialty cannot already have an ID").body(null);
         }
         Specialty result = specialtyRepository.save(specialty);
-        return ResponseEntity.created(new URI("/api/specialtys/" + result.getId()))
+        return ResponseEntity.created(new URI("/api/specialties/" + result.getId()))
                 .headers(HeaderUtil.createEntityCreationAlert("specialty", result.getId().toString()))
                 .body(result);
     }
 
     /**
-     * PUT  /specialtys -> Updates an existing specialty.
+     * PUT  /specialties -> Updates an existing specialty.
      */
-    @RequestMapping(value = "/specialtys",
+    @RequestMapping(value = "/specialties",
         method = RequestMethod.PUT,
         produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
@@ -67,21 +67,21 @@ public class SpecialtyResource {
     }
 
     /**
-     * GET  /specialtys -> get all the specialtys.
+     * GET  /specialties -> get all the specialties.
      */
-    @RequestMapping(value = "/specialtys",
+    @RequestMapping(value = "/specialties",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
-    public List<Specialty> getAllSpecialtys() {
-        log.debug("REST request to get all Specialtys");
+    public List<Specialty> getAllspecialties() {
+        log.debug("REST request to get all specialties");
         return specialtyRepository.findAll();
     }
 
     /**
-     * GET  /specialtys/:id -> get the "id" specialty.
+     * GET  /specialties/:id -> get the "id" specialty.
      */
-    @RequestMapping(value = "/specialtys/{id}",
+    @RequestMapping(value = "/specialties/{id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
@@ -95,9 +95,9 @@ public class SpecialtyResource {
     }
 
     /**
-     * DELETE  /specialtys/:id -> delete the "id" specialty.
+     * DELETE  /specialties/:id -> delete the "id" specialty.
      */
-    @RequestMapping(value = "/specialtys/{id}",
+    @RequestMapping(value = "/specialties/{id}",
             method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed

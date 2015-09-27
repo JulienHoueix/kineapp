@@ -2,7 +2,7 @@
     "kineappApp": {
         "specialty" : {
             "home": {
-                "title": "Specialtys",
+                "title": "Specialties",
                 "createLabel": "Create a new Specialty",
                 "createOrEditLabel": "Create or edit a Specialty"
             },

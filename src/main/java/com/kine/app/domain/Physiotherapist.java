@@ -52,7 +52,7 @@ public class Physiotherapist implements Serializable {
 
 	@ManyToMany
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-	@JoinTable(name = "PHYSIOTHERAPIST_SPECIALTY", joinColumns = @JoinColumn(name = "physiotherapists_id", referencedColumnName = "ID") , inverseJoinColumns = @JoinColumn(name = "specialtys_id", referencedColumnName = "ID") )
+	@JoinTable(name = "PHYSIOTHERAPIST_SPECIALTY", joinColumns = @JoinColumn(name = "physiotherapist_id", referencedColumnName = "id") , inverseJoinColumns = @JoinColumn(name = "specialty_id", referencedColumnName = "id") )
 	private Set<Specialty> specialties = new HashSet<>();
 
 	public Long getId() {

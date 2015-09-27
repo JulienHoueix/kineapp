@@ -2,7 +2,7 @@
 
 angular.module('kineappApp')
     .factory('Specialty', function ($resource, DateUtils) {
-        return $resource('api/specialtys/:id', {}, {
+        return $resource('api/specialties/:id', {}, {
             'query': { method: 'GET', isArray: true},
             'get': {
                 method: 'GET',

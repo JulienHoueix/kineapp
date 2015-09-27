@@ -5,7 +5,7 @@ angular.module('kineappApp').controller('PhysiotherapistDialogController',
         function($scope, $stateParams, $modalInstance, entity, Physiotherapist, Specialty) {
 
         $scope.physiotherapist = entity;
-        $scope.specialtys = Specialty.query();
+        $scope.specialties = Specialty.query();
         $scope.load = function(id) {
             Physiotherapist.get({id : id}, function(result) {
                 $scope.physiotherapist = result;
