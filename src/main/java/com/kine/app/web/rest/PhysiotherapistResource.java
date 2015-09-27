@@ -102,4 +102,13 @@ public class PhysiotherapistResource {
 		return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("physiotherapist", id.toString()))
 				.build();
 	}
+
+	@RequestMapping(value = "/physiotherapists/updatelocalization", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public ResponseEntity<Physiotherapist> updateLocalization(@RequestBody Physiotherapist physiotherapist)
+			throws URISyntaxException {
+		log.debug("REST request to update localization of Physiotherapist : {}", physiotherapist.getId());
+		physiotherapistService.updateLocalization(physiotherapist);
+		return new ResponseEntity<>(physiotherapist, HttpStatus.OK);
+	}
 }

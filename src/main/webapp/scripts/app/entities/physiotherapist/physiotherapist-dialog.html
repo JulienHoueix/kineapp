@@ -55,6 +55,16 @@
             <select class="form-control" id="field_specialty" multiple name="specialty" ng-model="physiotherapist.specialties" ng-options="specialty as specialty.id for specialty in specialties track by specialty.id"></select>
         </div>
     </div>
+    
+    <div>
+    	<button type="button" data-ng-click="updateLocalization()">Update localization</button>
+    	<div data-ng-if="map.center">
+			<ui-gmap-google-map center="map.center" zoom="map.zoom">
+				<ui-gmap-marker coords="map.center" idkey="1"></ui-gmap-marker>
+			</ui-gmap-google-map>
+		</div>
+    </div>
+    
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>

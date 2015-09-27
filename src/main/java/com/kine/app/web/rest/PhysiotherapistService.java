@@ -1,8 +1,6 @@
 package com.kine.app.web.rest;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -28,6 +26,12 @@ public class PhysiotherapistService {
 	private PhysiotherapistRepository physiotherapistRepository;
 
 	public Physiotherapist save(Physiotherapist physiotherapist) {
+		updateLocalization(physiotherapist);
+		physiotherapist = physiotherapistRepository.save(physiotherapist);
+		return physiotherapist;
+	}
+
+	public Physiotherapist updateLocalization(Physiotherapist physiotherapist) {
 		RestTemplate restTemplate = new RestTemplate();
 		GoogleMapGeocodeResponse googleMapGeocodeResponse = restTemplate.getForObject(googleMapGeocodeUrl,
 				GoogleMapGeocodeResponse.class, physiotherapist.getFullAddress(), googleApiKey);
@@ -36,8 +40,10 @@ public class PhysiotherapistService {
 			Result result = googleMapGeocodeResponse.getResults().stream().findFirst().get();
 			physiotherapist.setLatitude(result.getGeometry().getLocation().getLat());
 			physiotherapist.setLongitude(result.getGeometry().getLocation().getLng());
+		} else {
+			physiotherapist.setLatitude(null);
+			physiotherapist.setLongitude(null);
 		}
-		physiotherapist = physiotherapistRepository.save(physiotherapist);
 		return physiotherapist;
 	}
 

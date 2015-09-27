@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('kineappApp').controller('PhysiotherapistDialogController',
-    ['$scope', '$stateParams', '$modalInstance', 'entity', 'Physiotherapist', 'Specialty',
-        function($scope, $stateParams, $modalInstance, entity, Physiotherapist, Specialty) {
+        function($scope, $stateParams, $modalInstance, entity, Physiotherapist, Specialty, $http) {
 
         $scope.physiotherapist = entity;
         $scope.specialties = Specialty.query();
@@ -28,4 +27,16 @@ angular.module('kineappApp').controller('PhysiotherapistDialogController',
         $scope.clear = function() {
             $modalInstance.dismiss('cancel');
         };
-}]);
+        
+        $scope.updateLocalization = function() {
+        	$http.post('api/physiotherapists/updatelocalization', $scope.physiotherapist).then(function(response) {
+        		$scope.physiotherapist = response.data;
+        		if ($scope.physiotherapist.latitude && $scope.physiotherapist.longitude) {
+            		$scope.map = { center: { latitude: $scope.physiotherapist.latitude, longitude: $scope.physiotherapist.longitude }, zoom: 15 };
+        		} else {
+        			$scope.map = undefined;
+        		}
+        	});
+        }
+        
+});
