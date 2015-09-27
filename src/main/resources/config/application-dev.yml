@@ -8,18 +8,16 @@ spring:
     profiles:
         active: dev
     datasource:
-        dataSourceClassName: org.h2.jdbcx.JdbcDataSource
-        url: jdbc:h2:mem:jhipster;DB_CLOSE_DELAY=-1
-        databaseName: 
-        serverName: 
-        username: 
-        password: 
-
+        dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
+        url: jdbc:postgresql://localhost:5432/kineapp
+        username: kineapp
+        password: kineapp
+        
     jpa:
-        database-platform: com.kine.app.domain.util.FixedH2Dialect
-        database: H2
+        database-platform: com.kine.app.domain.util.FixedPostgreSQL82Dialect
+        database: POSTGRESQL
         openInView: false
-        show_sql: true
+        show_sql: false
         generate-ddl: false
         hibernate:
             ddl-auto: none
@@ -27,8 +25,9 @@ spring:
         properties:
             hibernate.cache.use_second_level_cache: true
             hibernate.cache.use_query_cache: false
-            hibernate.generate_statistics: true
+            hibernate.generate_statistics: false
             hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+
     messages:
         cache-seconds: 1
     thymeleaf:
