@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "baseName": "kineapp",
+    "packageName": "com.kine.app",
+    "packageFolder": "com/kine/app",
+    "authenticationType": "session",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": "no",
+    "useSass": true,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "8",
+    "enableTranslation": true,
+    "rememberMeKey": "e9038007d7178b311c2f441df1c5ee3c86c9116c"
+  }
+}
