@@ -50,3 +50,5 @@ cache:
     timeToLiveSeconds: 3600
     ehcache:
         maxBytesLocalHeap: 16M
+        
+google.api.key: AIzaSyDkyQ35-dcddd_dxkr8ddS2-e25NRXcHQs

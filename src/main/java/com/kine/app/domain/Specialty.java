@@ -15,55 +15,48 @@ import java.util.Objects;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Specialty implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
-    @Column(name = "name")
-    private String name;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    public Long getId() {
-        return id;
-    }
+	private String name;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-        Specialty specialty = (Specialty) o;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
-        if ( ! Objects.equals(id, specialty.id)) return false;
+		Specialty specialty = (Specialty) o;
 
-        return true;
-    }
+		if (!Objects.equals(id, specialty.id))
+			return false;
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+		return true;
+	}
 
-    @Override
-    public String toString() {
-        return "Specialty{" +
-                "id=" + id +
-                ", name='" + name + "'" +
-                '}';
-    }
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(id);
+	}
+
 }

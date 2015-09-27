@@ -11,10 +11,10 @@ import java.util.List;
  */
 public interface PhysiotherapistRepository extends JpaRepository<Physiotherapist,Long> {
 
-    @Query("select distinct physiotherapist from Physiotherapist physiotherapist left join fetch physiotherapist.specialtys")
+    @Query("select distinct physiotherapist from Physiotherapist physiotherapist left join fetch physiotherapist.specialties")
     List<Physiotherapist> findAllWithEagerRelationships();
 
-    @Query("select physiotherapist from Physiotherapist physiotherapist left join fetch physiotherapist.specialtys where physiotherapist.id =:id")
+    @Query("select physiotherapist from Physiotherapist physiotherapist left join fetch physiotherapist.specialties where physiotherapist.id =:id")
     Physiotherapist findOneWithEagerRelationships(@Param("id") Long id);
 
 }

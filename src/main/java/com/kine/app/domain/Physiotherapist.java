@@ -1,13 +1,24 @@
 package com.kine.app.domain;
 
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A Physiotherapist.
@@ -17,130 +28,138 @@ import java.util.Objects;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Physiotherapist implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    
-    @Column(name = "first_name")
-    private String firstName;
-    
-    @Column(name = "last_name")
-    private String lastName;
-    
-    @Column(name = "street")
-    private String street;
-    
-    @Column(name = "postal_code")
-    private Integer postalCode;
-    
-    @Column(name = "city")
-    private String city;
-    
-    @Column(name = "country")
-    private String country;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    @ManyToMany
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    @JoinTable(name = "PHYSIOTHERAPIST_SPECIALTY",
-               joinColumns = @JoinColumn(name="physiotherapists_id", referencedColumnName="ID"),
-               inverseJoinColumns = @JoinColumn(name="specialtys_id", referencedColumnName="ID"))
-    private Set<Specialty> specialtys = new HashSet<>();
+	private String firstName;
 
-    public Long getId() {
-        return id;
-    }
+	private String lastName;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	private String street;
 
-    public String getFirstName() {
-        return firstName;
-    }
+	private Integer postalCode;
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	private String city;
 
-    public String getLastName() {
-        return lastName;
-    }
+	private String country;
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	@Column(scale = 10, precision = 6)
+	private Double latitude;
 
-    public String getStreet() {
-        return street;
-    }
+	@Column(scale = 10, precision = 6)
+	private Double longitude;
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
+	@ManyToMany
+	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+	@JoinTable(name = "PHYSIOTHERAPIST_SPECIALTY", joinColumns = @JoinColumn(name = "physiotherapists_id", referencedColumnName = "ID") , inverseJoinColumns = @JoinColumn(name = "specialtys_id", referencedColumnName = "ID") )
+	private Set<Specialty> specialties = new HashSet<>();
 
-    public Integer getPostalCode() {
-        return postalCode;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setPostalCode(Integer postalCode) {
-        this.postalCode = postalCode;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getCity() {
-        return city;
-    }
+	public String getFirstName() {
+		return firstName;
+	}
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    public String getCountry() {
-        return country;
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-    public Set<Specialty> getSpecialtys() {
-        return specialtys;
-    }
+	public String getStreet() {
+		return street;
+	}
 
-    public void setSpecialtys(Set<Specialty> specialtys) {
-        this.specialtys = specialtys;
-    }
+	public void setStreet(String street) {
+		this.street = street;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public Integer getPostalCode() {
+		return postalCode;
+	}
 
-        Physiotherapist physiotherapist = (Physiotherapist) o;
+	public void setPostalCode(Integer postalCode) {
+		this.postalCode = postalCode;
+	}
 
-        if ( ! Objects.equals(id, physiotherapist.id)) return false;
+	public String getCity() {
+		return city;
+	}
 
-        return true;
-    }
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+	public String getCountry() {
+		return country;
+	}
 
-    @Override
-    public String toString() {
-        return "Physiotherapist{" +
-                "id=" + id +
-                ", firstName='" + firstName + "'" +
-                ", lastName='" + lastName + "'" +
-                ", street='" + street + "'" +
-                ", postalCode='" + postalCode + "'" +
-                ", city='" + city + "'" +
-                ", country='" + country + "'" +
-                '}';
-    }
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
+	public Set<Specialty> getSpecialties() {
+		return specialties;
+	}
+
+	public void setSpecialties(Set<Specialty> specialties) {
+		this.specialties = specialties;
+	}
+
+	@JsonIgnore
+	public String getFullAddress() {
+		return this.street + " " + this.postalCode + " " + this.city + " " + this.country;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
+
+		Physiotherapist physiotherapist = (Physiotherapist) o;
+
+		if (!Objects.equals(id, physiotherapist.id))
+			return false;
+
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(id);
+	}
+
 }
