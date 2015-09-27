@@ -328,7 +328,8 @@ module.exports = function (grunt) {
                 },
                 constants: {
                     ENV: 'dev',
-                    VERSION: parseVersionFromPomXml()
+                    VERSION: parseVersionFromPomXml(),
+                    GOOGLE_API_KEY: 'AIzaSyDkyQ35-dcddd_dxkr8ddS2-e25NRXcHQs'
                 }
             },
             prod: {

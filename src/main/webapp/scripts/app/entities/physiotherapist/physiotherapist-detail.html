@@ -1,0 +1,80 @@
+
+<div>
+    <h2><span translate="kineappApp.physiotherapist.detail.title">Physiotherapist</span> {{physiotherapist.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th translate="entity.detail.field">Field</th>
+                <th translate="entity.detail.value">Value</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <span translate="kineappApp.physiotherapist.firstName">FirstName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{physiotherapist.firstName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="kineappApp.physiotherapist.lastName">LastName</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{physiotherapist.lastName}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="kineappApp.physiotherapist.street">Street</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{physiotherapist.street}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="kineappApp.physiotherapist.postalCode">PostalCode</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{physiotherapist.postalCode}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="kineappApp.physiotherapist.city">City</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{physiotherapist.city}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="kineappApp.physiotherapist.country">Country</span>
+                </td>
+                <td>
+                    <span class="form-control-static">{{physiotherapist.country}}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span translate="kineappApp.physiotherapist.specialty">specialty</span>
+                </td>
+                <td>
+                    <span ng-repeat="specialty in physiotherapist.specialtys">
+                        <a class="form-control-static" ui-sref="specialty.detail({id: {{specialty.id}}})">{{specialty.id}}</a>{{$last ? '' : ', '}}
+                    <span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            onclick="window.history.back()"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

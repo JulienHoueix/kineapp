@@ -1,0 +1,27 @@
+{
+    "kineappApp": {
+        "physiotherapist" : {
+            "home": {
+                "title": "Physiotherapists",
+                "createLabel": "Create a new Physiotherapist",
+                "createOrEditLabel": "Create or edit a Physiotherapist"
+            },
+            "created": "A new Physiotherapist is created with identifier {{ param }}",
+            "updated": "A Physiotherapist is updated with identifier {{ param }}",
+            "deleted": "A Physiotherapist is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Physiotherapist {{ id }}?"
+            },
+            "detail": {
+                "title": "Physiotherapist"
+            },
+            "firstName": "FirstName",
+            "lastName": "LastName",
+            "street": "Street",
+            "postalCode": "PostalCode",
+            "city": "City",
+            "country": "Country",
+            "specialty": "Specialty"
+        }
+    }
+}

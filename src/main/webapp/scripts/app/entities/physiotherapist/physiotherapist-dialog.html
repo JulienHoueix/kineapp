@@ -1,0 +1,66 @@
+
+<form name="editForm" role="form" novalidate ng-submit="save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="clear()">&times;</button>
+        <h4 class="modal-title" id="myPhysiotherapistLabel" translate="kineappApp.physiotherapist.home.createOrEditLabel">Create or edit a Physiotherapist</h4>
+    </div>
+    <div class="modal-body">
+        <jh-alert-error></jh-alert-error>
+        <div class="form-group">
+            <label for="id" translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="physiotherapist.id" readonly>
+        </div>
+        <div class="form-group">
+            <label translate="kineappApp.physiotherapist.firstName" for="field_firstName">FirstName</label>
+            <input type="text" class="form-control" name="firstName" id="field_firstName"
+                    ng-model="physiotherapist.firstName"
+                    >
+        </div>
+        <div class="form-group">
+            <label translate="kineappApp.physiotherapist.lastName" for="field_lastName">LastName</label>
+            <input type="text" class="form-control" name="lastName" id="field_lastName"
+                    ng-model="physiotherapist.lastName"
+                    >
+        </div>
+        <div class="form-group">
+            <label translate="kineappApp.physiotherapist.street" for="field_street">Street</label>
+            <input type="text" class="form-control" name="street" id="field_street"
+                    ng-model="physiotherapist.street"
+                    >
+        </div>
+        <div class="form-group">
+            <label translate="kineappApp.physiotherapist.postalCode" for="field_postalCode">PostalCode</label>
+            <input type="number" class="form-control" name="postalCode" id="field_postalCode"
+                    ng-model="physiotherapist.postalCode"
+                    >
+        </div>
+        <div class="form-group">
+            <label translate="kineappApp.physiotherapist.city" for="field_city">City</label>
+            <input type="text" class="form-control" name="city" id="field_city"
+                    ng-model="physiotherapist.city"
+                    >
+        </div>
+        <div class="form-group">
+            <label translate="kineappApp.physiotherapist.country" for="field_country">Country</label>
+            <input type="text" class="form-control" name="country" id="field_country"
+                    ng-model="physiotherapist.country"
+                    >
+        </div>
+
+        <div class="form-group">
+            <label translate="kineappApp.physiotherapist.specialty" for="field_specialty">specialty</label>
+            <select class="form-control" id="field_specialty" multiple name="specialty" ng-model="physiotherapist.specialtys" ng-options="specialty as specialty.id for specialty in specialtys track by specialty.id"></select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || editForm.$submitted" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

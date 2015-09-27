@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql"/>
+    <property name="autoIncrement" value="false" dbms="oracle"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!--
+        Added the entity Physiotherapist.
+    -->
+    <changeSet id="20150927135010" author="jhipster">
+        <createTable tableName="PHYSIOTHERAPIST">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}" >
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(255)"/>
+            <column name="last_name" type="varchar(255)"/>
+            <column name="street" type="varchar(255)"/>
+            <column name="postal_code" type="integer"/>
+            <column name="city" type="varchar(255)"/>
+            <column name="country" type="varchar(255)"/>
+        </createTable>
+        
+        <createTable tableName="PHYSIOTHERAPIST_SPECIALTY">
+            <column name="specialtys_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="physiotherapists_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="physiotherapists_id, specialtys_id" tableName="PHYSIOTHERAPIST_SPECIALTY"/>
+
+        <addForeignKeyConstraint baseColumnNames="physiotherapists_id"
+                                 baseTableName="PHYSIOTHERAPIST_SPECIALTY"
+                                 constraintName="fk_physiotherapist_specialty_specialty_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="PHYSIOTHERAPIST"/>
+
+        <addForeignKeyConstraint baseColumnNames="specialtys_id"
+                                 baseTableName="PHYSIOTHERAPIST_SPECIALTY"
+                                 constraintName="fk_specialty_specialty_physiotherapist_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="SPECIALTY"/>
+        
+    </changeSet>
+</databaseChangeLog>

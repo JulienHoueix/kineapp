@@ -1,0 +1,48 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "specialty",
+            "otherEntityName": "specialty",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "lastName",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "street",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "postalCode",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "city",
+            "fieldType": "String"
+        },
+        {
+            "fieldId": 6,
+            "fieldName": "country",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20150927135010",
+    "dto": "no",
+    "pagination": "no"
+}

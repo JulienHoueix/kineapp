@@ -598,6 +598,7 @@
                     <artifactId>spring-boot-starter-tomcat</artifactId>
                 </dependency>
             </dependencies>
+            <!--  
             <build>
                 <plugins>
                     <plugin>
@@ -614,7 +615,7 @@
                                 <configuration>
                                     <skipTests>true</skipTests>
                                     <buildTool>grunt</buildTool>
-                                    <buildArgs>sass:server --force</buildArgs>
+                                    <buildArgs>sass:server -force</buildArgs>
                                 </configuration>
                             </execution>
                         </executions>
@@ -624,6 +625,7 @@
                     </plugin>
                 </plugins>
             </build>
+            -->
         </profile>
         <profile>
             <id>fast</id>
